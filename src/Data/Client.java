@@ -15,8 +15,16 @@ public class Client {
         return name;
     }
 
-    public void printAccounts() {
-        accounts.forEach(System.out::println);
+    public void extractFundsAccount(int index, float funds) {
+        accounts.forEach((Account a) -> {
+            if(a.getID() == index)a.extractFunds(funds);
+        });
+    }
+
+    public void addFundsAccount(int index, float funds) {
+        accounts.forEach((Account a) -> {
+            if(a.getID() == index)a.addFunds(funds);
+        });
     }
 
     public boolean addAccount(Account data) {
@@ -24,6 +32,10 @@ public class Client {
 
         accounts.add(data);
         return true;
+    }
+
+    public void printAccounts() {
+        accounts.forEach(System.out::println);
     }
 
     @Override

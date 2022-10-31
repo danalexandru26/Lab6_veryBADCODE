@@ -31,12 +31,18 @@ public class Main {
         }
     }
 
-
-    public static void addFunds(Vector<Bank> banks, String clientName, String bankName) {
+    public static void extractFunds(Vector<Bank> banks, String clientName, String bankName, int index, float funds) {
         banks.forEach((Bank b) -> {
-            b.
+            if (b.getName().equals(bankName)) b.extractClientFunds(clientName, index, funds);
         });
     }
+
+    public static void addFunds(Vector<Bank> banks, String clientName, String bankName, int index, float funds) {
+        banks.forEach((Bank b) -> {
+            if (b.getName().equals(bankName)) b.addClientFunds(clientName, index, funds);
+        });
+    }
+
     public static void printAllClientAccounts(Vector<Bank> banks, String clientName) {
         banks.forEach((Bank b) -> {
             b.findClientPrint(clientName);
@@ -45,18 +51,17 @@ public class Main {
 
     public static void printClientOfBank(Vector<Bank> banks, String bankName, String clientName) {
         banks.forEach((Bank b) -> {
-            if(b.getName().matches(bankName)) {
-                b.findClientPrint(clientName);
-            }
+            if (b.getName().equals(bankName)) b.findClientPrint(clientName);
         });
     }
+
     public static void printBankClients(Vector<Bank> banks, String name) {
-            banks.forEach((Bank b) -> {
-                if(b.getName().equals(name)){
-                    System.out.format("\n%s has the following clients: \n", name);
-                    b.printClients();
-                }
-            });
+        banks.forEach((Bank b) -> {
+            if (b.getName().equals(name)) {
+                System.out.format("\n%s has the following clients: \n", name);
+                b.printClients();
+            }
+        });
     }
 
     public static void printBankData(Vector<Bank> banks) {

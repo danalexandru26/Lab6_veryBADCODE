@@ -17,9 +17,36 @@ public class Bank {
         return clients.size();
     }
 
+    public void extractClientFunds(String clientName, int index, float funds) {
+        clients.forEach((Client c) -> {
+            if (c.getName().equals(clientName)) c.extractFundsAccount(index, funds);
+        });
+    }
+    public void addClientFunds(String clientName, int index, float funds) {
+        clients.forEach((Client c) -> {
+            if (c.getName().equals(clientName)) c.addFundsAccount(index, funds);
+        });
+    }
+
+    public void addClient(Client client) {
+        if (clients.stream()
+                .filter((Client c) -> c.getName().equals(client.getName()))
+                .toList().size() == 0
+        ) clients.add(client);
+    }
+
+    public void addAccountForClient(String[] formattedData) {
+        String clientName = formattedData[0];
+        var client = findClient(clientName);
+        if (client == null) return;
+
+        var account = new Account(formattedData[2], formattedData[3], Float.parseFloat(formattedData[4]));
+        if (!client.addAccount(account)) System.out.println("Could not add account, too many exist");
+    }
+
     private Client findClient(String clientName) {
-        for(var client : clients) {
-            if(client.getName().equals(clientName)) return client;
+        for (var client : clients) {
+            if (client.getName().equals(clientName)) return client;
         }
         return null;
     }
@@ -39,26 +66,10 @@ public class Bank {
 
     public void printClientAccounts() {
         clients.forEach((Client c) -> {
-                    System.out.print("\t" + c);
-                    System.out.println(" with the following accounts");
-                    c.printAccounts();
-                });
-    }
-
-    public void addClient(Client client) {
-        if (clients.stream()
-                .filter((Client c) -> c.getName().equals(client.getName()))
-                .toList().size() == 0
-        ) clients.add(client);
-    }
-
-    public void addAccountForClient(String[] formattedData) {
-        String clientName = formattedData[0];
-        var client = findClient(clientName);
-        if(client == null)return;
-
-        var account = new Account(formattedData[2], formattedData[3], Float.parseFloat(formattedData[4]));
-        if(!client.addAccount(account))System.out.println("Could not add account, too many exist");
+            System.out.print("\t" + c);
+            System.out.println(" with the following accounts");
+            c.printAccounts();
+        });
     }
 
     @Override
