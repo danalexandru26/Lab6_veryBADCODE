@@ -3,7 +3,6 @@ import Data.Client;
 
 import java.io.*;
 import java.util.Vector;
-import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -23,6 +22,10 @@ public class Main {
             printBankClients(banks, "Bulzan Bank");
 
             printClientOfBank(banks, "Bulzan Bank", "Bulzan Dan-Alexandru");
+
+            printAllClientAccounts(banks, "Bulzan Dan-Alexandru");
+
+            addFunds(banks, "Bulzan Dan-Alexandru", "Bulzan Bank", 7, 1301.4f);
 
             printAllClientAccounts(banks, "Bulzan Dan-Alexandru");
 
@@ -103,9 +106,13 @@ public class Main {
                 String[] data = line.split(";+");
                 var client = new Client(data[0], data[1]);
 
-                banks.stream()
+/*                banks.stream()
                         .filter((Bank b) -> b.getName().equals(data[2]))
-                        .forEach((Bank b) -> b.addClient(client));
+                        .forEach((Bank b) -> b.addClient(client));*/
+
+                banks.forEach((Bank b) -> {
+                    if(b.getName().equals(data[2]))b.addClient(client);
+                });
             }
         }
     }
