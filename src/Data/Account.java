@@ -20,6 +20,10 @@ public class Account implements Operations {
         lastOperation = LocalDate.now();
     }
 
+    public int getID() {
+        return Integer.parseInt(accountID);
+    }
+
     @Override
     public float interest() {
         var days = (float) ChronoUnit.DAYS.between(openDate, LocalDate.now());
@@ -57,10 +61,10 @@ public class Account implements Operations {
                 accountID, openDate.toString(), currency, funds);
     }
 
-    String accountID;
-    String currency;
-    LocalDate openDate;
-    LocalDate lastOperation;
-    float funds;
-    static int counterID;
+    private String accountID;
+    private String currency;
+    private LocalDate openDate;
+    private LocalDate lastOperation;
+    private float funds;
+    private static int counterID;
 }
