@@ -2,6 +2,7 @@ Bulzan Dan-Alexandru;Livada 403;Bulzan Bank
 Bulzan Dan-Alexandru;Livada 403;NVDA
 Dontu Andrei Raul;Timisoara Giroc;UPT Credit
 Popescu Sergiu Daniel;Timisoara Olimpia;TSLA
+Popescu Sergiu Daniel;Timisoara Olimpia;Iron Bank of Braaavos
 Simon Razvan;Timisoara Olimpia;Bulzan Bank
 Burciu Adelin;Timisoara Complex;NVDA
 David Bogdan;Timisoara Complex;NVDA

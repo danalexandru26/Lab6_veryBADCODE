@@ -1,1 +1,2 @@
 Bulzan Dan-Alexandru;Bulzan Bank;EUR;01.01.2001;5000
+Popescu Sergiu Daniel;Iron Bank of Braaavos;EUR;01.02.1990;12510

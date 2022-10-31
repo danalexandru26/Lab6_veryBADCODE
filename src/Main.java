@@ -29,6 +29,10 @@ public class Main {
 
             printAllClientAccounts(banks, "Bulzan Dan-Alexandru");
 
+            extractFunds(banks, "Popescu Sergiu Daniel", "TSLA", 3, 100);
+
+            printAllClientAccounts(banks, "Popescu Sergiu Daniel");
+
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -111,7 +115,7 @@ public class Main {
                         .forEach((Bank b) -> b.addClient(client));*/
 
                 banks.forEach((Bank b) -> {
-                    if(b.getName().equals(data[2]))b.addClient(client);
+                    if (b.getName().equals(data[2])) b.addClient(client);
                 });
             }
         }

@@ -22,6 +22,7 @@ public class Bank {
             if (c.getName().equals(clientName)) c.extractFundsAccount(index, funds);
         });
     }
+
     public void addClientFunds(String clientName, int index, float funds) {
         clients.forEach((Client c) -> {
             if (c.getName().equals(clientName)) c.addFundsAccount(index, funds);
