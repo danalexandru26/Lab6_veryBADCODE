@@ -17,6 +17,16 @@ public class Bank {
         return clients.size();
     }
 
+    public Account searchClientAccounts(int index) {
+        Account result;
+
+        for (var client : clients) {
+            result = client.searchAccount(index);
+            if(result != null) return result;
+        }
+        return null;
+    }
+
     public void extractClientFunds(String clientName, int index, float funds) {
         clients.forEach((Client c) -> {
             if (c.getName().equals(clientName)) c.extractFundsAccount(index, funds);

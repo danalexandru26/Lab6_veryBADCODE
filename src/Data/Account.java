@@ -24,6 +24,17 @@ public class Account implements Operations {
         return Integer.parseInt(accountID);
     }
 
+    public boolean transferFunds(Account from, float changeFunds) {
+        if (from.funds >= changeFunds) {
+            addFunds(changeFunds);
+            from.extractFunds(changeFunds);
+
+            return true;
+        }
+
+        return false;
+    }
+
     @Override
     public float interest() {
         var days = (float) ChronoUnit.DAYS.between(openDate, LocalDate.now());

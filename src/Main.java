@@ -1,3 +1,4 @@
+import Data.Account;
 import Data.Bank;
 import Data.Client;
 
@@ -27,9 +28,13 @@ public class Main {
 
             addFunds(banks, "Bulzan Dan-Alexandru", "Bulzan Bank", 7, 1301.4f);
 
-            printAllClientAccounts(banks, "Bulzan Dan-Alexandru");
+            //printAllClientAccounts(banks, "Bulzan Dan-Alexandru");
 
-            extractFunds(banks, "Popescu Sergiu Daniel", "TSLA", 3, 100);
+            //extractFunds(banks, "Popescu Sergiu Daniel", "TSLA", 3, 100);
+
+            //printAllClientAccounts(banks, "Popescu Sergiu Daniel");
+
+            transferFunds(banks, 3, 9, 100f);
 
             printAllClientAccounts(banks, "Popescu Sergiu Daniel");
 
@@ -38,6 +43,25 @@ public class Main {
         }
     }
 
+
+    public static void transferFunds(Vector<Bank> banks, int indexTo, int indexFrom, float funds) {
+        Account to = null;
+        Account from = null;
+
+        for (var bank : banks) {
+            to = bank.searchClientAccounts(indexTo);
+            if(to != null)break;
+        }
+
+        for (var bank : banks) {
+            from = bank.searchClientAccounts(indexFrom);
+            if(from != null)break;
+        }
+
+        if (to != null && from != null) {
+            if(to.transferFunds(from, funds))System.out.println("Transfer Success");
+        }
+    }
     public static void extractFunds(Vector<Bank> banks, String clientName, String bankName, int index, float funds) {
         banks.forEach((Bank b) -> {
             if (b.getName().equals(bankName)) b.extractClientFunds(clientName, index, funds);

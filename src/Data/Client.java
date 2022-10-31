@@ -17,13 +17,13 @@ public class Client {
 
     public void extractFundsAccount(int index, float funds) {
         accounts.forEach((Account a) -> {
-            if(a.getID() == index)a.extractFunds(funds);
+            if (a.getID() == index) a.extractFunds(funds);
         });
     }
 
     public void addFundsAccount(int index, float funds) {
         accounts.forEach((Account a) -> {
-            if(a.getID() == index)a.addFunds(funds);
+            if (a.getID() == index) a.addFunds(funds);
         });
     }
 
@@ -36,6 +36,13 @@ public class Client {
 
     public void printAccounts() {
         accounts.forEach(System.out::println);
+    }
+
+    public Account searchAccount(int index) {
+        for (var account : accounts) {
+            if (account.getID() == index) return account;
+        }
+        return null;
     }
 
     @Override
